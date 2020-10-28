@@ -7,15 +7,15 @@ class PostComponent extends Component{
             <div className="conatiner">
                 <div className="row">
                     <div className="col-sm-8 offset-sm-2">
-                        <div class="card mt-3">
-                            <div class="card-header">
+                        <div className="card mt-3">
+                            <div className="card-header">
                                 <h6>Sahan</h6>
                             </div>
-                            <div class="card-body">
+                            <div className="card-body">
                                 <h5>Title</h5>
                                 This is some text within a card body.
                             </div>
-                            <div class="card-footer">
+                            <div className="card-footer">
                                 <button className="btn btn-primary">Like</button>
                             </div>
                         </div>

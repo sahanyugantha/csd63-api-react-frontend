@@ -1,59 +1,51 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class PostComponent extends Component{
 
-   state = {
-       error : null,
-       isLoaded : false,
-       items : []
-   }
+   
 
+    //Fake API
+    data = [
+        {id : 1, body: "Post one", author: "Leanardo Caprio"},
+        {id : 2, body: "Lorem ipsum dolor amet consectetur adipisicing", author : "Selena Gomez"},
+        {id : 3, body: "GGik ipsum dolor amet consectetur adipisicing", author : "Emma Watson"}
+    ];
 
-   componentDidMount(){
-        /**
-         * We can call API with
-         * 1. XmlHttpRequest (AJAX --> outdated*)
-         * 2. Fetch API (modern, for now only latest browser version only supporting)
-         * 3. Axios (suited any scenario)
-         **/
+    state = {
+        error  : null,
+        isLoaded : false,
+        items : []
+    }
 
-        const API_URL_ENDPOINT = "http://localhost:8080/api/v1/posts";
-
-        //promise().then().catch();
-        axios.get(API_URL_ENDPOINT)
-        .then(response => {
+    componentDidMount(){
+        //API CALL
+        if(this.data.length === 0){
             this.setState({
                 isLoaded : true,
-                items : response.data
-            })
-        })
-        .catch(error => {
+                error : "No data available"
+            });
+        } else {
             this.setState({
                 isLoaded : true,
-                error : error
-            })
-        });
+                items : this.data
+            });
+        }
 
-   }
+    }
 
-   //Render the output to HTML page with JSX.
-   render(){
-        const {error , isLoaded, items } = this.state;
+    render(){
 
+        const error = this.state.error;
+        const isLoaded = this.state.isLoaded;
+        const items = this.state.items;
+        
         if(error){
             return(
-                <div className="alert alert-danger" role="alert">
-                    A simple danger alert—check it out!
-                </div>
+                <h3>Error :  Could not load the items</h3>
             );
         } else if(!isLoaded){
             return(
-                <div className="d-flex justify-content-center">
-                    <div className="spinner-border" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                </div>
+                <h3>Loading...</h3>
             );
         } else {
             return(
@@ -82,10 +74,8 @@ class PostComponent extends Component{
                 </div>
             );
         }
-       
-   }
 
-   
+    }
 }
 
 export default PostComponent;

@@ -58,6 +58,7 @@ class PostComponent extends Component{
         } else {
             return(
                 <div className="conatiner">
+
                     <div className="row">
                         <div className="col-sm-8 offset-sm-2">
                             

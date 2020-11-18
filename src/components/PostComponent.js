@@ -18,7 +18,7 @@ class PostComponent extends Component{
          * 3. Axios (suited any scenario)
          **/
 
-        const API_URL_ENDPOINT = "http://localhost:8080/api/v1/posts";
+        const API_URL_ENDPOINT = "http://localhost:8082/api/v1/posts";
 
         //promise().then().catch();
         axios.get(API_URL_ENDPOINT)
@@ -66,7 +66,11 @@ class PostComponent extends Component{
                             
                                 <div key={item.id} className="card mt-3">
                                     <div className="card-header">
-                                        <h6>{item.author}</h6>
+                                        <img className="my-in" id="avatar" src="img/default.jpg" alt="NA"/>
+                                        <div id="u-data">
+                                            <h6 className="my-in">{item.author}</h6>
+                                            <p className="" id="post-time">{item.time}</p>
+                                        </div>
                                     </div>
                                     <div className="card-body">
                                         {item.body}
